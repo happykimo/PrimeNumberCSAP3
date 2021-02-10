@@ -1,33 +1,33 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Driver {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int maxNum = 1000000;						//max limit
-		int[] nums = new int[maxNum];
-		for(int i =0; i < nums.length;i++) {	//initialize the integer array
-			nums[i]=i+1;
-		}
-		compute(nums); //compute the primes
-		display(nums); //display the primes
+	public static void main(String args[]) 
+	{
+		//Scanner input = new Scanner(System.in); 
+		final int MAX = 100;
+		boolean primes[];
+		primes = new boolean[MAX];
+		compute(primes);
+		display(primes);
 	}
+
+
 	
 	/* Use the algorithm described in the lab description so that the array, nums, contains all the
 	 * valid primes. All others should be -1. 
 	 */
-	public static void compute(int[]nums) {
-		ArrayList<Integer> result = new ArrayList<Integer>();
+	  
+	public static void compute(boolean[] nums) {
 		for(int i=2;i<=nums.length;i++) {
 			for(int j=2;i<=i;j++) {
 				if(j==i) {
-					result.add(i);
+					nums[i]=true;
 				}
 				if(i%j==0) {
 					break;
 				}
 			}
-			
 		}
 	}
 	/* 
@@ -35,10 +35,12 @@ public class Driver {
 	 * Assume that the compute method has been called that sets the array to contain the prime numbers as 
 	 * described in the lab document. 
 	 */
-	 public static void display(int[] list) {
-
-	        for(int integer: list) {
-	            System.out.println(integer + " ");
+	 public static void display(boolean[] list) {
+		 
+	        for(int i=0;i<list.length;i++) {
+	        	if(list[i]==true) {
+	        		System.out.println(i);
+	        	}
 	        }
 
 	    }
